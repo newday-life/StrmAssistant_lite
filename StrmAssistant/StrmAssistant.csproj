@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
-    <AssemblyVersion>2.0.0.26</AssemblyVersion>
-    <FileVersion>2.0.0.26</FileVersion>
+    <AssemblyVersion>1.0</AssemblyVersion>
+    <FileVersion>1.0</FileVersion>
     <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
     <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
     <LangVersion>8.0</LangVersion>
@@ -25,8 +25,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Lib.Harmony" Version="2.3.5" />
-    <PackageReference Include="mediabrowser.server.core" Version="4.8.5" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.6" />
+    <PackageReference Include="mediabrowser.server.core" Version="4.8.11" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -56,6 +56,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="$(ILRepack) /out:%25AppData%25\Emby-Server\programdata\plugins\$(TargetFileName) $(TargetPath) $(TargetDir)0Harmony.dll $(TargetDir)ChineseConverter.dll $(TargetDir)TinyPinyin.dll /lib:$(TargetDir)" />
+    <Exec Command="$(ILRepack) /out:bin\output\$(TargetFileName) $(TargetPath) $(TargetDir)0Harmony.dll $(TargetDir)ChineseConverter.dll $(TargetDir)TinyPinyin.dll /lib:$(TargetDir)" />
   </Target>
 </Project>

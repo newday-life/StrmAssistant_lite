@@ -27,8 +27,8 @@ namespace StrmAssistant.Options
         [VisibleCondition(nameof(IsModSuccess), SimpleCondition.IsFalse)]
         public StatusItem ModStatus { get; set; } = new StatusItem();
 
-        [DisplayNameL("GeneralOptions_EditorTitle_General_Options", typeof(Resources))]
-        public GeneralOptions GeneralOptions { get; set; } = new GeneralOptions();
+        //[DisplayNameL("GeneralOptions_EditorTitle_General_Options", typeof(Resources))]
+        //public GeneralOptions GeneralOptions { get; set; } = new GeneralOptions();
 
         [DisplayNameL("PluginOptions_ModOptions_Mod_Features", typeof(Resources))]
         public ModOptions ModOptions { get; set; } = new ModOptions();

@@ -50,11 +50,28 @@ namespace StrmAssistant.Options
             VersionInfoList.Clear();
 
             VersionInfoList.Add(
+            new GenericListItem
+            {
+                PrimaryText = Resources.About_Fork,
+                Icon = IconNames.title,
+                IconMode = ItemListIconMode.SmallRegular,
+                HyperLink = "https://blog.jiawei.xin/?p=1960",
+            });
+
+            VersionInfoList.Add(
                 new GenericListItem
                 {
                     PrimaryText = GetVersionHash(),
                     Icon = IconNames.info,
                     IconMode = ItemListIconMode.SmallRegular
+                });
+            VersionInfoList.Add(
+                new GenericListItem
+                {
+                    PrimaryText = Resources.Blog_Url,
+                    Icon = IconNames.code,
+                    IconMode = ItemListIconMode.SmallRegular,
+                    HyperLink = "https://blog.jiawei.xin/?p=1960",
                 });
 
             VersionInfoList.Add(
@@ -63,16 +80,23 @@ namespace StrmAssistant.Options
                     PrimaryText = Resources.Repo_Link,
                     Icon = IconNames.code,
                     IconMode = ItemListIconMode.SmallRegular,
-                    HyperLink = "https://github.com/sjtuross/StrmAssistant",
+                    HyperLink = "https://github.com/xinjiawei/StrmAssistant_less",
                 });
-
             VersionInfoList.Add(
                 new GenericListItem
                 {
-                    PrimaryText = Resources.Wiki_Link,
-                    Icon = IconNames.menu_book,
+                    PrimaryText = Resources.Original_Repo_Link,
+                    Icon = IconNames.code,
                     IconMode = ItemListIconMode.SmallRegular,
-                    HyperLink = "https://github.com/sjtuross/StrmAssistant/wiki",
+                    HyperLink = "https://github.com/sjtuross/StrmAssistant",
+                });
+            VersionInfoList.Add(
+                new GenericListItem
+                {
+                    PrimaryText = Resources.About_StrmAssistant_Pro,
+                    Icon = IconNames.code,
+                    IconMode = ItemListIconMode.SmallRegular,
+                    HyperLink = "https://github.com/sjtuross/StrmAssistant.Releases/releases/tag/v3.0.0.0\r\n",
                 });
         }
     }

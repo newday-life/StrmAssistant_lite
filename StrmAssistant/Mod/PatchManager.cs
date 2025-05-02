@@ -13,29 +13,13 @@ namespace StrmAssistant.Mod
         public static Harmony HarmonyMod;
         public static readonly List<PatchTracker> PatchTrackerList = new List<PatchTracker>();
 
-        public static EnableImageCapture EnableImageCapture;
+        ////public static EnableImageCapture EnableImageCapture;
+
+        // Ä£ºýËÑË÷
         public static EnhanceChineseSearch EnhanceChineseSearch;
-        public static MergeMultiVersion MergeMultiVersion;
-        public static ExclusiveExtract ExclusiveExtract;
-        public static ChineseMovieDb ChineseMovieDb;
-        public static ChineseTvdb ChineseTvdb;
-        public static EnhanceMovieDbPerson EnhanceMovieDbPerson;
-        public static AltMovieDbConfig AltMovieDbConfig;
+        // Ä£ºýËÑË÷
         public static EnableProxyServer EnableProxyServer;
-        public static PreferOriginalPoster PreferOriginalPoster;
-        public static UnlockIntroSkip UnlockIntroSkip;
-        public static PinyinSortName PinyinSortName;
-        public static EnhanceNfoMetadata EnhanceNfoMetadata;
-        public static HidePersonNoImage HidePersonNoImage;
-        public static EnforceLibraryOrder EnforceLibraryOrder;
-        public static BeautifyMissingMetadata BeautifyMissingMetadata;
-        public static EnhanceMissingEpisodes EnhanceMissingEpisodes;
-        public static ChapterChangeTracker ChapterChangeTracker;
-        public static MovieDbEpisodeGroup MovieDbEpisodeGroup;
-        public static NoBoxsetsAutoCreation NoBoxsetsAutoCreation;
-        public static EnhanceNotificationSystem EnhanceNotificationSystem;
-        public static EnableDeepDelete EnableDeepDelete;
-        public static SuppressPluginUpdate SuppressPluginUpdate;
+
 
         private static readonly ConcurrentDictionary<Tuple<Type, string>, HarmonyMethod> HarmonyMethodCache 
             = new ConcurrentDictionary<Tuple<Type, string>, HarmonyMethod>();
@@ -58,29 +42,33 @@ namespace StrmAssistant.Mod
                 }
             }
 
-            EnableImageCapture = new EnableImageCapture();
+            ////EnableImageCapture = new EnableImageCapture();
+
+            // Ä£ºýËÑË÷
             EnhanceChineseSearch = new EnhanceChineseSearch();
-            MovieDbEpisodeGroup = new MovieDbEpisodeGroup();
-            MergeMultiVersion = new MergeMultiVersion();
-            ExclusiveExtract = new ExclusiveExtract();
-            ChineseMovieDb = new ChineseMovieDb();
-            ChineseTvdb = new ChineseTvdb();
-            EnhanceMovieDbPerson = new EnhanceMovieDbPerson();
-            AltMovieDbConfig = new AltMovieDbConfig();
+            // Ä£ºýËÑË÷
+
+            ////MovieDbEpisodeGroup = new MovieDbEpisodeGroup();
+            ////MergeMultiVersion = new MergeMultiVersion();
+            ////ExclusiveExtract = new ExclusiveExtract();
+            ////ChineseMovieDb = new ChineseMovieDb();
+            ////ChineseTvdb = new ChineseTvdb();
+            ////EnhanceMovieDbPerson = new EnhanceMovieDbPerson();
+            ////AltMovieDbConfig = new AltMovieDbConfig();
             EnableProxyServer = new EnableProxyServer();
-            PreferOriginalPoster = new PreferOriginalPoster();
-            UnlockIntroSkip = new UnlockIntroSkip();
-            PinyinSortName = new PinyinSortName();
-            EnhanceNfoMetadata = new EnhanceNfoMetadata();
-            HidePersonNoImage = new HidePersonNoImage();
-            EnforceLibraryOrder = new EnforceLibraryOrder();
-            BeautifyMissingMetadata = new BeautifyMissingMetadata();
-            EnhanceMissingEpisodes = new EnhanceMissingEpisodes();
-            ChapterChangeTracker = new ChapterChangeTracker();
-            NoBoxsetsAutoCreation = new NoBoxsetsAutoCreation();
-            EnhanceNotificationSystem = new EnhanceNotificationSystem();
-            EnableDeepDelete = new EnableDeepDelete();
-            SuppressPluginUpdate = new SuppressPluginUpdate();
+            ////PreferOriginalPoster = new PreferOriginalPoster();
+            ////UnlockIntroSkip = new UnlockIntroSkip();
+            ////PinyinSortName = new PinyinSortName();
+            ////EnhanceNfoMetadata = new EnhanceNfoMetadata();
+            ////HidePersonNoImage = new HidePersonNoImage();
+            ////EnforceLibraryOrder = new EnforceLibraryOrder();
+            ////BeautifyMissingMetadata = new BeautifyMissingMetadata();
+            ////EnhanceMissingEpisodes = new EnhanceMissingEpisodes();
+            ////ChapterChangeTracker = new ChapterChangeTracker();
+            ////NoBoxsetsAutoCreation = new NoBoxsetsAutoCreation();
+            ////EnhanceNotificationSystem = new EnhanceNotificationSystem();
+            ////EnableDeepDelete = new EnableDeepDelete();
+            ////SuppressPluginUpdate = new SuppressPluginUpdate();
         }
 
         public static bool IsPatched(MethodBase methodInfo, Type type)

@@ -3,7 +3,6 @@ using Emby.Web.GenericEdit.Elements;
 using Emby.Web.GenericEdit.PropertyDiff;
 using MediaBrowser.Common;
 using MediaBrowser.Model.Logging;
-using StrmAssistant.Common;
 using StrmAssistant.Mod;
 using StrmAssistant.Options.UIBaseClasses.Store;
 using StrmAssistant.Properties;
@@ -11,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using static StrmAssistant.Common.CommonUtility;
-using static StrmAssistant.Options.GeneralOptions;
 using static StrmAssistant.Options.Utility;
 
 namespace StrmAssistant.Options.Store
@@ -44,20 +42,6 @@ namespace StrmAssistant.Options.Store
             if (e.Options is PluginOptions options)
             {
                 var suppress = _currentSuppressOnOptionsSaved;
-
-                if (string.IsNullOrEmpty(options.GeneralOptions.CatchupTaskScope))
-                {
-                    options.GeneralOptions.CatchupTaskScope = CatchupTask.MediaInfo.ToString();
-                }
-                else if (options.GeneralOptions.CatchupMode &&
-                         !Plugin.Instance.IntroSkipStore.GetOptions().UnlockIntroSkip)
-                {
-                    var taskScope = options.GeneralOptions.CatchupTaskScope;
-                    var selectedTasks = taskScope.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Where(f => f != CatchupTask.Fingerprint.ToString())
-                        .ToList();
-                    options.GeneralOptions.CatchupTaskScope = string.Join(",", selectedTasks);
-                }
 
                 options.NetworkOptions.ProxyServerUrl =
                     !string.IsNullOrWhiteSpace(options.NetworkOptions.ProxyServerUrl)
@@ -96,40 +80,8 @@ namespace StrmAssistant.Options.Store
                 var changes = PropertyChangeDetector.DetectObjectPropertyChanges(PluginOptions, options);
                 var changedProperties = new HashSet<string>(changes.Select(c => c.PropertyName));
 
-                if (changedProperties.Contains(nameof(PluginOptions.GeneralOptions.CatchupMode)))
-                {
-                    if (options.GeneralOptions.CatchupMode)
-                    {
-                        QueueManager.Initialize();
-                    }
-                    else
-                    {
-                        QueueManager.Dispose();
-                    }
-                }
 
-                if (changedProperties.Contains(nameof(PluginOptions.GeneralOptions.CatchupTaskScope)))
-                {
-                    UpdateCatchupScope(options.GeneralOptions.CatchupTaskScope);
-                }
-
-                if (changedProperties.Contains(nameof(PluginOptions.GeneralOptions.MaxConcurrentCount)))
-                {
-                    var maxConcurrentCount = options.GeneralOptions.MaxConcurrentCount;
-
-                    QueueManager.UpdateMasterSemaphore(maxConcurrentCount);
-
-                    if (Plugin.Instance.MediaInfoExtractStore.GetOptions().EnableImageCapture)
-                        EnableImageCapture.UpdateResourcePool(maxConcurrentCount);
-
-                    Plugin.FingerprintApi.PatchTimeout(maxConcurrentCount);
-                }
-
-                if (changedProperties.Contains(nameof(PluginOptions.GeneralOptions.Tier2MaxConcurrentCount)))
-                {
-                    QueueManager.UpdateTier2Semaphore(options.GeneralOptions.Tier2MaxConcurrentCount);
-                }
-
+                // 模糊搜索
                 if (PatchManager.EnhanceChineseSearch != null)
                 {
                     var isSimpleTokenizer = string.Equals(EnhanceChineseSearch.CurrentTokenizerName, "simple",
@@ -144,6 +96,8 @@ namespace StrmAssistant.Options.Store
                         Plugin.Instance.ApplicationHost.NotifyPendingRestart();
                     }
                 }
+
+                // 模糊搜索
 
                 if (changedProperties.Contains(nameof(PluginOptions.ModOptions.SearchScope)))
                 {
@@ -186,17 +140,6 @@ namespace StrmAssistant.Options.Store
 
                 if (!suppress)
                 {
-                    _logger.Info("CatchupMode is set to {0}", options.GeneralOptions.CatchupMode);
-                    var catchupTaskScope = GetSelectedCatchupTaskDescription();
-                    _logger.Info("CatchupTaskScope is set to {0}",
-                        string.IsNullOrEmpty(catchupTaskScope) ? "EMPTY" : catchupTaskScope);
-
-                    _logger.Info("Master MaxConcurrentCount is set to {0}", options.GeneralOptions.MaxConcurrentCount);
-                    _logger.Info("CooldownDurationSeconds is set to {0}", options.GeneralOptions.CooldownDurationSeconds);
-                    _logger.Info("Tier2 MaxConcurrentCount is set to {0}", options.GeneralOptions.Tier2MaxConcurrentCount);
-                    
-                    _logger.Info("CatchupMode is set to {0}", options.GeneralOptions.CatchupMode);
-
                     _logger.Info("EnhanceChineseSearch is set to {0}", options.ModOptions.EnhanceChineseSearch);
                     var searchScope = string.Join(", ",
                         options.ModOptions.SearchScope

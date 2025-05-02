@@ -19,7 +19,7 @@ namespace StrmAssistant.Options.View
             ContentData = store.GetOptions();
 
             PluginOptions.Initialize();
-            PluginOptions.GeneralOptions.Initialize();
+            //PluginOptions.GeneralOptions.Initialize();
             PluginOptions.ModOptions.Initialize();
             PluginOptions.NetworkOptions.Initialize();
             PluginOptions.AboutOptions.Initialize();
@@ -43,7 +43,7 @@ namespace StrmAssistant.Options.View
         {
             if (ContentData is PluginOptions options)
             {
-                options.GeneralOptions.ValidateOrThrow();
+                //options.GeneralOptions.ValidateOrThrow();
                 options.NetworkOptions.ValidateOrThrow();
             }
 
