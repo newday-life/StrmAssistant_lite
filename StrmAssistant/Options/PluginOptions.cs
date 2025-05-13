@@ -33,8 +33,8 @@ namespace StrmAssistant.Options
         [DisplayNameL("PluginOptions_ModOptions_Mod_Features", typeof(Resources))]
         public ModOptions ModOptions { get; set; } = new ModOptions();
 
-        [DisplayNameL("NetworkOptions_EditorTitle_Network", typeof(Resources))]
-        public NetworkOptions NetworkOptions { get; set; } = new NetworkOptions();
+        // [DisplayNameL("NetworkOptions_EditorTitle_Network", typeof(Resources))]
+        // public NetworkOptions NetworkOptions { get; set; } = new NetworkOptions();
 
         [DisplayNameL("AboutOptions_EditorTitle_About", typeof(Resources))]
         public AboutOptions AboutOptions { get; set; } = new AboutOptions();
