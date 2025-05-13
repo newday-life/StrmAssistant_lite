@@ -15,10 +15,10 @@ namespace StrmAssistant.Mod
 
         ////public static EnableImageCapture EnableImageCapture;
 
-        // Ä£ºýËÑË÷
+        // Ã„Â£ÂºÃ½Ã‹Ã‘Ã‹Ã·
         public static EnhanceChineseSearch EnhanceChineseSearch;
-        // Ä£ºýËÑË÷
-        public static EnableProxyServer EnableProxyServer;
+        // Ã„Â£ÂºÃ½Ã‹Ã‘Ã‹Ã·
+        // public static EnableProxyServer EnableProxyServer;
 
 
         private static readonly ConcurrentDictionary<Tuple<Type, string>, HarmonyMethod> HarmonyMethodCache 
@@ -44,9 +44,9 @@ namespace StrmAssistant.Mod
 
             ////EnableImageCapture = new EnableImageCapture();
 
-            // Ä£ºýËÑË÷
+            // Ã„Â£ÂºÃ½Ã‹Ã‘Ã‹Ã·
             EnhanceChineseSearch = new EnhanceChineseSearch();
-            // Ä£ºýËÑË÷
+            // Ã„Â£ÂºÃ½Ã‹Ã‘Ã‹Ã·
 
             ////MovieDbEpisodeGroup = new MovieDbEpisodeGroup();
             ////MergeMultiVersion = new MergeMultiVersion();
@@ -55,7 +55,7 @@ namespace StrmAssistant.Mod
             ////ChineseTvdb = new ChineseTvdb();
             ////EnhanceMovieDbPerson = new EnhanceMovieDbPerson();
             ////AltMovieDbConfig = new AltMovieDbConfig();
-            EnableProxyServer = new EnableProxyServer();
+            // EnableProxyServer = new EnableProxyServer();
             ////PreferOriginalPoster = new PreferOriginalPoster();
             ////UnlockIntroSkip = new UnlockIntroSkip();
             ////PinyinSortName = new PinyinSortName();
