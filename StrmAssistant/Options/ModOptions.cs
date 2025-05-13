@@ -71,10 +71,7 @@ namespace StrmAssistant.Options
             EnhanceChineseSearch || RuntimeInformation.ProcessArchitecture == Architecture.X64 &&
             (Plugin.Instance.ApplicationHost.ApplicationVersion >= new Version("4.8.3.0") &&
              Plugin.Instance.ApplicationHost.ApplicationVersion < new Version("4.9.0.0") ||
-             Plugin.Instance.ApplicationHost.ApplicationVersion >= new Version("4.9.0.15") &&
-             Plugin.Instance.ApplicationHost.ApplicationVersion <= new Version("4.9.0.48") ||
-             Plugin.Instance.ApplicationHost.ApplicationVersion >= new Version("4.9.0.49") &&
-             Plugin.Instance.ApplicationHost.ApplicationVersion <= new Version("4.9.0.51"));
+             Plugin.Instance.ApplicationHost.ApplicationVersion >= new Version("4.9.0.15"));
 
         public void Initialize()
         {
