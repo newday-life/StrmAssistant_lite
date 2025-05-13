@@ -153,11 +153,11 @@ namespace StrmAssistant.Options.Store
                         string.IsNullOrEmpty(searchScope) ? "ALL" : searchScope);
                     _logger.Info("ExcludeOriginalTitleFromSearch is set to {0}", options.ModOptions.ExcludeOriginalTitleFromSearch);
 
-                    _logger.Info("EnableProxyServer is set to {0}", options.NetworkOptions.EnableProxyServer);
-                    _logger.Info("ProxyServerUrl is set to {0}",
-                        !string.IsNullOrEmpty(options.NetworkOptions.ProxyServerUrl)
-                            ? options.NetworkOptions.ProxyServerUrl
-                            : "EMPTY");
+                    // _logger.Info("EnableProxyServer is set to {0}", options.NetworkOptions.EnableProxyServer);
+                    // _logger.Info("ProxyServerUrl is set to {0}",
+                    //     !string.IsNullOrEmpty(options.NetworkOptions.ProxyServerUrl)
+                    //         ? options.NetworkOptions.ProxyServerUrl
+                    //         : "EMPTY");
                 }
 
                 if (suppress) _currentSuppressOnOptionsSaved = false;
