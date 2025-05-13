@@ -43,39 +43,39 @@ namespace StrmAssistant.Options.Store
             {
                 var suppress = _currentSuppressOnOptionsSaved;
 
-                options.NetworkOptions.ProxyServerUrl =
-                    !string.IsNullOrWhiteSpace(options.NetworkOptions.ProxyServerUrl)
-                        ? options.NetworkOptions.ProxyServerUrl.Trim().TrimEnd('/')
-                        : options.NetworkOptions.ProxyServerUrl?.Trim();
+                // options.NetworkOptions.ProxyServerUrl =
+                //     !string.IsNullOrWhiteSpace(options.NetworkOptions.ProxyServerUrl)
+                //         ? options.NetworkOptions.ProxyServerUrl.Trim().TrimEnd('/')
+                //         : options.NetworkOptions.ProxyServerUrl?.Trim();
 
-                if (!suppress)
-                {
-                    if (options.NetworkOptions.EnableProxyServer &&
-                        !string.IsNullOrWhiteSpace(options.NetworkOptions.ProxyServerUrl))
-                    {
-                        if (TryParseProxyUrl(options.NetworkOptions.ProxyServerUrl, out var schema, out var host, out var port,
-                                out var username, out var password) &&
-                            CheckProxyReachability(schema, host, port, username, password) is (true, var httpPing))
-                        {
-                            options.NetworkOptions.ProxyServerStatus.Status = ItemStatus.Succeeded;
-                            options.NetworkOptions.ProxyServerStatus.Caption = Resources.ProxyServer_Available;
-                            options.NetworkOptions.ProxyServerStatus.StatusText = $"{httpPing} ms";
-                        }
-                        else
-                        {
-                            options.NetworkOptions.ProxyServerStatus.Status = ItemStatus.Unavailable;
-                            options.NetworkOptions.ProxyServerStatus.Caption = Resources.ProxyServer_Unavailable;
-                            options.NetworkOptions.ProxyServerStatus.StatusText = "N/A";
-                        }
+                // if (!suppress)
+                // {
+                //     if (options.NetworkOptions.EnableProxyServer &&
+                //         !string.IsNullOrWhiteSpace(options.NetworkOptions.ProxyServerUrl))
+                //     {
+                //         if (TryParseProxyUrl(options.NetworkOptions.ProxyServerUrl, out var schema, out var host, out var port,
+                //                 out var username, out var password) &&
+                //             CheckProxyReachability(schema, host, port, username, password) is (true, var httpPing))
+                //         {
+                //             options.NetworkOptions.ProxyServerStatus.Status = ItemStatus.Succeeded;
+                //             options.NetworkOptions.ProxyServerStatus.Caption = Resources.ProxyServer_Available;
+                //             options.NetworkOptions.ProxyServerStatus.StatusText = $"{httpPing} ms";
+                //         }
+                //         else
+                //         {
+                //             options.NetworkOptions.ProxyServerStatus.Status = ItemStatus.Unavailable;
+                //             options.NetworkOptions.ProxyServerStatus.Caption = Resources.ProxyServer_Unavailable;
+                //             options.NetworkOptions.ProxyServerStatus.StatusText = "N/A";
+                //         }
 
-                        options.NetworkOptions.ShowProxyServerStatus = true;
-                    }
-                    else
-                    {
-                        options.NetworkOptions.ProxyServerStatus.StatusText = string.Empty;
-                        options.NetworkOptions.ShowProxyServerStatus = false;
-                    }
-                }
+                //         options.NetworkOptions.ShowProxyServerStatus = true;
+                //     }
+                //     else
+                //     {
+                //         options.NetworkOptions.ProxyServerStatus.StatusText = string.Empty;
+                //         options.NetworkOptions.ShowProxyServerStatus = false;
+                //     }
+                // }
                 
                 var changes = PropertyChangeDetector.DetectObjectPropertyChanges(PluginOptions, options);
                 var changedProperties = new HashSet<string>(changes.Select(c => c.PropertyName));
@@ -116,19 +116,19 @@ namespace StrmAssistant.Options.Store
                     }
                 }
 
-                if (changedProperties.Contains(nameof(PluginOptions.NetworkOptions.ProxyServerUrl)) ||
-                    changedProperties.Contains(nameof(PluginOptions.NetworkOptions.EnableProxyServer)))
-                {
-                    if (options.NetworkOptions.EnableProxyServer &&
-                        options.NetworkOptions.ProxyServerStatus.Status == ItemStatus.Succeeded)
-                    {
-                        Plugin.Instance.ApplicationHost.NotifyPendingRestart();
-                    }
-                    else if (!options.NetworkOptions.EnableProxyServer)
-                    {
-                        Plugin.Instance.ApplicationHost.NotifyPendingRestart();
-                    }
-                }
+                // if (changedProperties.Contains(nameof(PluginOptions.NetworkOptions.ProxyServerUrl)) ||
+                //     changedProperties.Contains(nameof(PluginOptions.NetworkOptions.EnableProxyServer)))
+                // {
+                //     if (options.NetworkOptions.EnableProxyServer &&
+                //         options.NetworkOptions.ProxyServerStatus.Status == ItemStatus.Succeeded)
+                //     {
+                //         Plugin.Instance.ApplicationHost.NotifyPendingRestart();
+                //     }
+                //     else if (!options.NetworkOptions.EnableProxyServer)
+                //     {
+                //         Plugin.Instance.ApplicationHost.NotifyPendingRestart();
+                //     }
+                // }
             }
         }
 
