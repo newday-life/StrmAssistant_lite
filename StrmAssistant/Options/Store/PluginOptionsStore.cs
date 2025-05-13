@@ -104,17 +104,17 @@ namespace StrmAssistant.Options.Store
                     UpdateSearchScope(options.ModOptions.SearchScope);
                 }
 
-                if (changedProperties.Contains(nameof(PluginOptions.NetworkOptions.EnableProxyServer)))
-                {
-                    if (options.NetworkOptions.EnableProxyServer)
-                    {
-                        PatchManager.EnableProxyServer.Patch();
-                    }
-                    else
-                    {
-                        PatchManager.EnableProxyServer.Unpatch();
-                    }
-                }
+                // if (changedProperties.Contains(nameof(PluginOptions.NetworkOptions.EnableProxyServer)))
+                // {
+                //     if (options.NetworkOptions.EnableProxyServer)
+                //     {
+                //         PatchManager.EnableProxyServer.Patch();
+                //     }
+                //     else
+                //     {
+                //         PatchManager.EnableProxyServer.Unpatch();
+                //     }
+                // }
 
                 // if (changedProperties.Contains(nameof(PluginOptions.NetworkOptions.ProxyServerUrl)) ||
                 //     changedProperties.Contains(nameof(PluginOptions.NetworkOptions.EnableProxyServer)))
